@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Inscription - FacturePro{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <h2 class="text-center mb-4">
+                    <i class="bi bi-person-plus text-primary"></i><br>
+                    Créer un compte
+                </h2>
+
+                <!-- Flash messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="company_name" class="form-label">Nom de l'entreprise *</label>
+                        <input type="text" class="form-control" id="company_name" name="company_name" 
+                               value="{{ request.form.company_name if request.form }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" class="form-control" id="email" name="email" 
+                               value="{{ request.form.email if request.form }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe * (min. 6 caractères)</label>
+                        <input type="password" class="form-control" id="password" name="password" required minlength="6">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password_confirm" class="form-label">Confirmer le mot de passe *</label>
+                        <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Créer mon compte</button>
+                </form>
+
+                <hr class="my-4">
+                <div class="text-center">
+                    <p class="mb-0">Déjà un compte ?</p>
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary mt-2">Se connecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!---{% extends "base.html" %}
+ {% block title %}Inscription - FacturePro{% endblock %}
+ {% block content %}
+ <div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <h2 class="text-center mb-4">
+                    <i class="bi bi-person-plus text-primary"></i><br>
+                    Créer un compte
+                </h2>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="company_name" class="form-label">Nom de l'entreprise * </label>
+                        <input type="text" class="form-control" id="company_name" name="company_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" class="form-control" id="email" name="email" required> caractères)</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe * (min. 6 
+                        <input type="password" class="form-control" id="password" name="password" required minlength="6">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password_confirm" class="form-label">Confirmer le mot de passe *</label>
+                        <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Créer mon compte</button>
+                </form>
+                <hr class="my-4">
+                <div class="text-center">
+                    <p class="mb-0">Déjà un compte ?</p>
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary mt2">Se connecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+--->

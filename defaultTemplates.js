@@ -1,7 +1,7 @@
-export const templatePlaceholder = {
-  image: "img/1.jgp",
-  location: "Location",
-  price: "100",
-  description: "",
+export const templatePlace = {
+  image: 'img/1.jpg',
+  location: 'Location',
+  price: '100',
+  description: 'description',
   size: 50
 }

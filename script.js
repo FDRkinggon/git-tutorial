@@ -1,15 +1,25 @@
 import {templatePlace} from './defaultTemplates.js'
-let imgEl = document.getElementById('img-dsp')
-let locationEl = document.getElementById('location-el')
-let amountEl = document.getElementById('amount-el')
-let descriptionEl = document.getElementById('description-el')
-let sizeEl = document.getElementById('size-el')
+import { dataArr } from './dataField.js'
+
+let container = document.querySelector('body')
+function loppFunc(dataArr = [templatePlace]){
+  const loopingHere = dataArr.map(loop => {
+    const {image, location, price, description, size} = loop
+    return  `
+    <div class="container">
+      <div class="image-container">
+        <img src="${image}" alt="anime facial">
+      </div>
+      <div class="content">
+          <p>${location}</p>
+          <p>$ ${price}</p>
+          <p>${description}</p>
+          <p>${size}</p>
+      </div>
+    </div>
+  `;}).join('')
+  return loopingHere
+}
 
 
-const {image, location, price, description, size} = templatePlace
-
-imgEl.src = image
-locationEl.textContent = location
-amountEl.textContent = `$${price}`
-descriptionEl.textContent = description
-sizeEl.textContent = `${size} m^2`
+container.innerHTML = loppFunc(dataArr)
